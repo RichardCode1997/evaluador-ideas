@@ -41,6 +41,7 @@ import { ref } from 'vue'
 const ideas = ref(JSON.parse(localStorage.getItem('ideas') || '[]'))
 
 function eliminar(index) {
+  if (!confirm('¿Eliminar esta idea? Esta acción no se puede deshacer.')) return
   ideas.value.splice(index, 1)
   localStorage.setItem('ideas', JSON.stringify(ideas.value))
 }
